@@ -1,0 +1,21 @@
+<div>
+    <input [(ngModel)]="word" placeholder="Enter a word" />
+    <button (click)="fetchWordDefinition()">Get Definition</button>
+  </div>
+  
+  <div *ngIf="errorMessage" style="color: red;">
+    {{ errorMessage }}
+  </div>
+  
+  <div *ngIf="definition">
+    <h2>Word: {{ word }}</h2>
+    <div *ngFor="let meaning of definition[0].meanings">
+      <h3>{{ meaning.partOfSpeech }}</h3>
+      <ul>
+        <li *ngFor="let def of meaning.definitions">
+          {{ def.definition }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
